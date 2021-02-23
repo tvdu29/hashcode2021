@@ -14,6 +14,9 @@ def get_max_pizza(pizzas, ingredients)
     end
     i += 1
   end
+#  p "i " + i.to_s
+#  p "sc_max " + sc_max.to_s
+#  p "ing " + pizzas[i_max][1..pizzas[i_max].length - 1].to_s
   return i_max
 end
 
@@ -43,7 +46,7 @@ until file.eof?
 end
 
 p "sort pizzas..."
-pizzas.sort_by{|p| -p.length}
+pizzas.sort_by!{ |p| -p.length }
 
 fileout = File.open(filename.to_s.split('.in')[0] + ".out", "w+")
 
@@ -82,14 +85,15 @@ until nb_teams.zero?
     nb_livraisons[0] -= 1
   end
   fileout.write(nb_pizzas.to_s + " ")
+  ingredients = Set.new
   until nb_pizzas.zero? || pizzas.length.zero?
-    ingredients = Set.new
     i_pizza = get_max_pizza(pizzas, ingredients)
     p "max pizza " + pizzas[i_pizza][0].to_s
     p "nb pizzas left " + pizzas.length.to_s
     p "nb pizzas in delivery left " + nb_pizzas.to_s
     p "nb teams left " + nb_teams.to_s
-    ingredients << pizzas[i_pizza][1..pizzas[i_pizza].length - 1]
+    ingredients.merge(pizzas[i_pizza][1..pizzas[i_pizza].length - 1])
+#    p "ingredients " + ingredients.to_s
     fileout.write(pizzas[i_pizza][0].to_s)
     pizzas.delete_at(i_pizza)
     nb_pizzas -= 1
@@ -99,5 +103,7 @@ until nb_teams.zero?
       fileout.write("\n")
     end
   end
+  ingredients = Set.new
   nb_teams -= 1
+  p "---NEW TEAM---"
 end
