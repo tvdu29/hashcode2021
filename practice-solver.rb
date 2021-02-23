@@ -33,18 +33,18 @@ nb_livraisons = [0,0,0]
 
 while (!meta_data_num[3].zero? && meta_data_num[0] >= 4) || (!meta_data_num[2].zero? && meta_data_num[0] >= 2) || (!meta_data_num[1].zero? && meta_data_num[0] >= 2)
   p "teams of: 2>" + meta_data_num[1].to_s + " 3>" + meta_data_num[2].to_s + " 4>" + meta_data_num[3].to_s
-  if !meta_data_num[3].zero?
-    meta_data_num[3] -= 1
+  if !meta_data_num[1].zero?
+    meta_data_num[1] -= 1
     meta_data_num[0] -= 4
-    nb_livraisons[2] += 1
+    nb_livraisons[0] += 1
   elsif !meta_data_num[2].zero?
     meta_data_num[2] -= 1
     meta_data_num[0] -= 3
     nb_livraisons[1] += 1
   else
-    meta_data_num[1] -= 1
+    meta_data_num[3] -= 1
     meta_data_num[0] -= 2
-    nb_livraisons[0] += 1
+    nb_livraisons[2] += 1
   end
   nb_teams += 1
 end
