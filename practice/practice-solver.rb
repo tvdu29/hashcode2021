@@ -73,6 +73,8 @@ end
 
 fileout.write(nb_teams.to_s + "\n")
 
+final_score = 0
+
 until nb_teams.zero?
   if !nb_livraisons[2].zero?
     nb_pizzas = 4
@@ -103,7 +105,10 @@ until nb_teams.zero?
       fileout.write("\n")
     end
   end
+  final_score += (ingredients.length * ingredients.length)
   ingredients = Set.new
   nb_teams -= 1
   p "---NEW TEAM---"
 end
+
+p "final score: " + final_score.to_s
