@@ -4,12 +4,15 @@ require 'set'
 def get_max_pizza(pizzas, ingredients)
   i_max = 0
   sc_max = 0
+  sc_waste = Float::INFINITY
   i = 0
   while i < pizzas.length
-    break if sc_max >= pizzas[i].length - 1
+    break if sc_max > pizzas[i].length - 1
     ing_i = pizzas[i][1..pizzas[i].length - 1]
-    if (ing_i - ingredients.to_a).length > sc_max
-      sc_max = (ing_i - ingredients.to_a).length
+    score = (ing_i - ingredients.to_a).length
+    if (score > sc_max) || (score == sc_max && ing_i.length - score < sc_waste)
+      sc_max = score
+      sc_waste = ing_i.length - score
       i_max = i
     end
     i += 1
