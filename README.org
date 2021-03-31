@@ -2,4 +2,4 @@
 #+AUTHOR: Tanguy Mazé
 
 * Qualification round 
-[[file:Hahscode2021_quali_tmaze.png]]
+[[file:Hashcode2021_quali_tmaze.png]]
