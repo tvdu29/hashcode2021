@@ -2,5 +2,4 @@
 #+AUTHOR: Tanguy Mazé
 
 * Qualification round 
-B team
-Rank: 510
+[[file:Hahscode2021_quali_tmaze.png]]
