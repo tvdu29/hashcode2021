@@ -9,6 +9,9 @@ def get_intersections(paths, streets, graph, inters)
       inters[graph[streets[st][0]][1]].add(st) unless i == path.length - 1
     }
   }
+  inters.each_with_index { |e, i|
+    inters[i] = e.to_a
+  }
   p "streetlights " + inters.to_s
 end
 
@@ -22,10 +25,8 @@ def get_timming(inters, streets, cycles)
         min_st = st
       end
     }
+    int.sort_by!{ |st| streets[st][2]}
     int.each { |st|
-      p "--NEW NODE--"
-      p "min score " + min_sc.to_s
-      p "street sc " + streets[st][2].to_s
       streets[st][2] = ((streets[st][2] / min_sc).round > (cycles / cycles).round) ? (cycles / cycles).round : (streets[st][2] / min_sc)
     }
   }
